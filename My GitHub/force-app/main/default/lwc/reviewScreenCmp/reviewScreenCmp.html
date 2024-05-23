@@ -1,0 +1,170 @@
+<template>
+    <!-- Error Section-->
+    <template if:true={haserror}>
+      <div class="slds-theme_error slds-p-left--small"><b>Error: Please review the below errors to proceed further.</b></div>
+    </template>
+  
+      <div class="page-outer-text">
+      <h2 class="page-heading">Review Service Appointment</h2>
+    </div>
+    <div>
+      <!-- Service Resource Section -->
+      <div class="slds-m-vertical_small">
+        <div class="slds-section">
+          <h3 class="slds-section__title slds-theme--shade">
+            <span class="slds-p-horizontal--small slds-truncate">Service Resource</span>
+          </h3>
+          <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+              <div>
+                <span class="slds-form-element__label">Required service resource</span>
+              </div>
+              <div>
+                <span>{serviceresourcename}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- General Information Section -->
+      <div class="slds-m-vertical_small">
+        <div class="slds-section">
+          <h3 class="slds-section__title slds-theme--shade">
+            <span class="slds-p-horizontal--small slds-truncate">General Information</span>
+          </h3>
+        </div>
+        <div class="slds-grid">
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+            <div>
+              <span class="slds-form-element__label">Work Type</span>
+            </div>
+            <div>
+              <span>{worktypegroupname}</span>
+            </div>
+          </div>
+  
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+            <div>
+              <span class="slds-form-element__label">Description</span>
+            </div>
+            <div>
+              <textarea class="slds-textarea"></textarea>
+            </div>
+          </div>
+        </div>
+  
+        <div class="slds-grid">
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+            <div>
+              <span class="slds-form-element__label">Address</span>
+            </div>
+            <div class="slds-address">
+              <span>{street}</span>
+              <span>{city} {postalcode}</span>
+              <span>{state}</span>
+              <span>{country}</span>
+            </div>
+          </div>
+  
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+            <div>
+              <span class="slds-form-element__label">Comment</span>
+            </div>
+            <div>
+              <span>{comment}</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="slds-grid">
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+            <div>
+              <span class="slds-form-element__label">Appointment Type</span>
+            </div>
+            <div>
+              <span>{appointmenttypename}</span>
+            </div>
+          </div>
+  
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+            <lightning-radio-group name="LocationGroup"
+              label="Current User Location"
+              options={options}
+              value={value}
+              required
+              type="radio">
+            </lightning-radio-group>
+          </div>
+        </div>
+      </div>
+      <!-- Scheduled Times Section -->
+      <div class="slds-m-vertical_small">
+        <div class="slds-section">
+          <h3 class="slds-section__title slds-theme--shade">
+            <span class="slds-p-horizontal--small slds-truncate">Scheduled Times</span>
+          </h3>
+          <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+              <div>
+                <span class="slds-form-element__label">Scheduled Start ({selectedimezone})</span>
+              </div>
+              <div>
+                <span>{formattedstartdate}</span>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+              <div>
+                <span class="slds-form-element__label">Scheduled End ({selectedimezone})</span>
+              </div>
+              <div>
+                <span>{formattedenddate}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Personal Details Section -->
+      <div class="slds-m-vertical_small">
+        <div class="slds-section">
+          <h3 class="slds-section__title slds-theme--shade">
+            <span class="slds-p-horizontal--small slds-truncate">Personal Details</span>
+          </h3>
+        </div>
+        <div class="slds-grid">
+          <lightning-layout-item class="slds-col slds-size_1-of-2 slds-m-bottom_medium slds-p-horizontal_small">
+            <lightning-input data-name="FName" type="text" required="true" label="First Name"></lightning-input>
+          </lightning-layout-item>
+  
+          <lightning-layout-item class="slds-col slds-size_1-of-2 slds-m-bottom_medium slds-p-horizontal_small">
+            <lightning-input data-name="LName" type="text" required="true" label="Last Name"></lightning-input>
+          </lightning-layout-item>
+        </div>
+  
+        <div class="slds-grid">
+          <lightning-layout-item class="slds-col slds-size_1-of-2 slds-m-bottom_medium slds-p-horizontal_small">
+            <lightning-input data-name="Email" type="text" required="true" label="Email" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" message-when-pattern-mismatch="Please enter a valid email"></lightning-input>
+          </lightning-layout-item>
+  
+          <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium slds-p-horizontal_small">
+            <div class="slds-grid">
+              <lightning-layout-item class="slds-col slds-size_1-of-4 slds-m-bottom_medium slds-p-horizontal_xx-small">
+                <lightning-input data-name="Code" type="text" required="true" label="Country Code" pattern="[+][0-9]{1,3}$" message-when-pattern-mismatch="Please enter a valid country code"></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item class="slds-col slds-size_3-of-4 slds-m-bottom_medium slds-p-horizontal_small">
+                <lightning-input data-name="Phone" type="text" required="true" label="Phone" pattern="[0-9]{10}$" message-when-pattern-mismatch="Please enter a valid phone number"></lightning-input>
+              </lightning-layout-item>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Buttons-->
+      <div class="d-flex content-center">
+        <lightning-layout-item class="slds-p-left_xx-small">
+          <lightning-button label="Previous" onclick={handleClickPrevious} class="ic-btn-outlined slds-m-right_large"></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-p-left_xx-small">
+          <lightning-button label="Next" variant="brand" onclick={handleClickNext}></lightning-button>
+        </lightning-layout-item>
+      </div>
+    </div>
+  </template>

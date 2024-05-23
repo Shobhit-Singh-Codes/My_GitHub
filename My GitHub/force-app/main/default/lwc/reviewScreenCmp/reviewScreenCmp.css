@@ -1,0 +1,38 @@
+.slds-col.slds-size_1-of-2.slds-m-bottom_medium {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 12px;
+}
+
+h3.slds-section__title.slds-theme--shade {
+    font-size: 20px;
+    padding: 3px 0;
+}
+
+.slds-col.slds-size_1-of-2.slds-m-bottom_medium div:nth-child(2) span {
+    padding: 2px 0 4px 4px;
+    color: rgb(24, 24, 24);
+    border-bottom: 1px solid #ccc;
+    display: block;
+}
+
+.slds-card__body.slds-p-horizontal_small.flowruntimeBody {
+    margin-top: 8px;
+}
+
+.page-body .page-heading {
+    padding-bottom: 4px;
+}
+
+.slds-address{
+    border-bottom: 1px solid #ccc;
+}
+
+.slds-address span {
+    border: none !important;
+    padding: 0 0 2px 4px !important;
+}
+
+.slds-theme_error{
+    font-size: 14px;
+}

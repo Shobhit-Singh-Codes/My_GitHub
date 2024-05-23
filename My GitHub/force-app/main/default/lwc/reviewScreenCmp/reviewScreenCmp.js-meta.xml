@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="appointmenttype" label="Appointment Type" type="String"/>
+            <property name="parentId" label="Parent Id" type="String"/>
+            <property name="additionalinformation" label="Additional Information" type="String"/>
+            <property name="city" label="City" type="String"/>
+            <property name="comment" label="Comment" type="String"/>
+            <property name="country" label="Country" type="String"/>
+            <property name="schedendtime" label="Schedule End Time" type="String"/>
+            <property name="postalcode" label="Postal Code" type="String"/>
+            <property name="schedstarttime" label="Schedule Start Time" type="String"/>
+            <property name="state" label="State" type="String"/>
+            <property name="street" label="Street" type="String"/>
+            <property name="worktypegroupid" label="Work Type Group Id" type="String"/>
+            <property name="serviceresourceid" label="Service Resource Id" type="String"/>
+            <property name="serviceterritoryid" label="Service Territory Id" type="String"/>
+            <property name="additionalfields" label="Additional Fields" type="String"/>
+            <property name="isanonymousbooking" label="Is Anonymous Booking" type="Boolean"/>
+            <property name="leadfirstname" label="Lead First Name" type="String"/>
+            <property name="leadlastname" label="Lead Last Name" type="String"/>
+            <property name="leademail" label="Lead Email" type="String"/>
+            <property name="leadphone" label="Lead Phone" type="String"/>
+            <property name="selectedimezone" label="Selected Time Zone" type="String"/>
+            <property name="OptionalAttendees" label="Optional service resource" type="String"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

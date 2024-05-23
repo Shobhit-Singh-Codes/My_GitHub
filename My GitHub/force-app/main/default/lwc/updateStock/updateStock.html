@@ -1,0 +1,44 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Update Stock" icon-name="standard:planogram">
+        <div class="slds-m-left_small slds-grid">
+            <lightning-combobox
+                name="Items per page"
+                label="Items per page"
+                value={selectedCount}
+                options={countOptions}
+                onchange={handleCountChange} >
+            </lightning-combobox>
+            <lightning-input class="slds-m-left_small" type="Search" variant="standard" name="serachText" label="Ingredient Name" placeholder="type here...">
+            </lightning-input>
+            <lightning-button class="slds-m-left_small slds-m-top_large" variant="brand" label="Search" disabled={searchDisabled} onclick={handleSearch}></lightning-button>
+            <lightning-button class="slds-m-left_small slds-m-top_large" variant="brand" label="Update" disabled={updateDisabled} onclick={handleUpdate}></lightning-button>
+        </div>
+        <template if:true={showRecords}>
+            <div class="slds-m-top_small slds-m-left_small">
+            <table class="slds-table slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th>Ingredient Name</th>
+                        <th>In Stock Quantity</th>
+                        <th>Minimum Quantity</th>
+                        <th>Quantity to add</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={currentPageRecords} for:item="rec">
+                        <tr key={rec.Id}>
+                            <td>{rec.Name}</td>
+                            <td>{rec.In_Stock_Quantity__c}</td>
+                            <td>{rec.Min_Stock_Quantity__c}</td>
+                            <td>
+                                <lightning-input type="number" variant="label-hidden" name="QtyAdd" label="label"></lightning-input>
+                                </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        </template>
+         <template if:false={showRecords}><div class="slds-m-top_small slds-m-left_small"><h4>No records found!!!</h4></div></template>
+    </lightning-card>
+</template>
